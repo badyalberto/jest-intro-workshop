@@ -6,6 +6,9 @@ import { getUserData } from "../utils/modules";
 /**
  * Write the assertions using the most appropriate matcher
  */
+
+jest.mock("axios");
+
 describe("07-exercises", () => {
   test("getUserData returns the user data", async () => {
     const BASE_URL = "https://www.api.com/users/1";
@@ -23,7 +26,7 @@ describe("07-exercises", () => {
 
     // 2. set a mock resolved value to the axios.get method
     //    and pass it the `users` variable
-    jest.mock("axios");
+    axios.get.mockResolvedValue(users);
     // 3. use await with the getUsers function and pass it as an argument
     //    the `BASE_URL` variable and then store the returned data
     //    in a variable `result`
